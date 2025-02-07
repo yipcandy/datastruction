@@ -8,10 +8,10 @@ using namespace std;
 template <class T>
 class BSTNode {
 public:
-    T           value_;     // ¹Ø¼ü×Ö(¼üÖµ)
-    BSTNode*    left_;      // ×óº¢×Ó
-    BSTNode*    right_;     // ÓÒº¢×Ó
-    BSTNode*    parent_;    // ¸¸½áµã
+    T           value_;     // å…³é”®å­—(é”®å€¼)
+    BSTNode*    left_;      // å·¦å­©å­
+    BSTNode*    right_;     // å³å­©å­
+    BSTNode*    parent_;    // çˆ¶ç»“ç‚¹
 
     BSTNode(T data, BSTNode* p, BSTNode* lhs, BSTNode* rhs) :
         value_(data), 
@@ -104,7 +104,7 @@ BSTNode<T>* BSTree<T>::insert(BSTNode<T>* tree,BSTNode<T>* add) {
 template<class T>
 bool BSTree<T>::insert(T key) {
     BSTNode<T>* add = nullptr;
-    //±£Ö¤´ı²åÈëÔªËØ²»ÖØ¸´
+    //ä¿è¯å¾…æ’å…¥å…ƒç´ ä¸é‡å¤
     if (search(key) || (add = new BSTNode<T>(key, nullptr, nullptr, nullptr)) == nullptr)
         return false;
     insert(root_,add);
@@ -165,7 +165,7 @@ T BSTree<T>::getMax() {
 
     return p->value_;
 }
-template<class T>   //´óÓÚ¸Ã½ÚµãµÄ×îĞ¡½Úµã
+template<class T>   //å¤§äºè¯¥èŠ‚ç‚¹çš„æœ€å°èŠ‚ç‚¹
 BSTNode<T>* BSTree<T>::successor(BSTNode<T>* tree) {
     if (tree->right_ != nullptr)
         getMin(tree->right_);

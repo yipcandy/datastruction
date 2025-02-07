@@ -14,7 +14,7 @@ void ChangeLength1D(T*& a, int oldLength, int newLength) {
 
 
 //class ArrayList
-//¹¹Ôìº¯Êı
+//æ„é€ å‡½æ•°
 template<class T>
 ArrayList<T>::ArrayList(int initialCapacity) {
     if (initialCapacity < 1) {
@@ -26,7 +26,7 @@ ArrayList<T>::ArrayList(int initialCapacity) {
     element = new T[arrayLength];
     listSize = 0;
 }
-//¸´ÖÆ¹¹Ôìº¯Êı
+//å¤åˆ¶æ„é€ å‡½æ•°
 template<class T>
 ArrayList<T>::ArrayList(const ArrayList<T>& theList) {
     arrayLength = theList.arrayLength;
@@ -35,7 +35,7 @@ ArrayList<T>::ArrayList(const ArrayList<T>& theList) {
     copy(theList.element, theList.element + listSize, element);
 }
 
-//»ù±¾·½·¨
+//åŸºæœ¬æ–¹æ³•
 template<class T>
 void ArrayList<T>::CheckIndex(int theIndex) const {
     if (theIndex < 0 || theIndex >= listSize) {

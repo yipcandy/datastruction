@@ -6,12 +6,12 @@ using namespace std;
 
 class Graph{
 	private:
-		int** G;	 			//ÁÚ½Ó¾ØÕó 
-		int* isvisited;			//·ÃÎÊÊı×é 
-		int Nv;					//¶¥µãÊı
-		int Ne;					//±ßÊı 
+		int** G;	 			//é‚»æ¥çŸ©é˜µ 
+		int* isvisited;			//è®¿é—®æ•°ç»„ 
+		int Nv;					//é¡¶ç‚¹æ•°
+		int Ne;					//è¾¹æ•° 
 	public:
-		//¹¹Ôìº¯Êı 
+		//æ„é€ å‡½æ•° 
 		Graph(int nv , int ne){
 			this->Nv = nv;
 			this->Ne = ne;
@@ -22,7 +22,7 @@ class Graph{
 				G[i] = new int[nv+1];
 				memset(G[i],0,sizeof(G[i][0])*(nv+1));
 			}
-			cout<<"ÇëÊäÈë±ß£º"<<endl;
+			cout<<"è¯·è¾“å…¥è¾¹ï¼š"<<endl;
 			for(int i = 0 ; i < ne ; i++){
 				int a,b;
 				cin>>a>>b;
@@ -31,38 +31,38 @@ class Graph{
 			}
 		}
 		
-		//ÖØÖÃº¯Êı
+		//é‡ç½®å‡½æ•°
 		void reset(){
 			memset(this->isvisited,0,sizeof(this->isvisited[0])*(this->Nv+1));
 		}
 		
-		//¹ã¶ÈÓÅÏÈ±éÀúBFS 
+		//å¹¿åº¦ä¼˜å…ˆéå†BFS 
 		void BFS(int vertex){
 			queue<int> queue;
-			queue.push(vertex);			//³õÊ¼½áµãÈë¶Ó 
+			queue.push(vertex);			//åˆå§‹ç»“ç‚¹å…¥é˜Ÿ 
 			this->isvisited[vertex] = 1;
 			int now;
-			while(!queue.empty()){		//¶Ó²»¿ÕÒ»Ö±Ñ­»· 
-				now = queue.front();	//¶ÔÍ·ÔªËØ³öÕ» 	
+			while(!queue.empty()){		//é˜Ÿä¸ç©ºä¸€ç›´å¾ªç¯ 
+				now = queue.front();	//å¯¹å¤´å…ƒç´ å‡ºæ ˆ 	
 				queue.pop();
-				cout<<now<<" ";				//´òÓ¡µ±Ç°½áµã
+				cout<<now<<" ";				//æ‰“å°å½“å‰ç»“ç‚¹
 				int i = 1;
-				while(i <= this->Nv){		//Óëµ±Ç°½áµãÏàÁÚÇÒÎ´±»·ÃÎÊµÄ½áµãÈë¶Ó 
+				while(i <= this->Nv){		//ä¸å½“å‰ç»“ç‚¹ç›¸é‚»ä¸”æœªè¢«è®¿é—®çš„ç»“ç‚¹å…¥é˜Ÿ 
 					if(this->G[now][i] == 1 && isvisited[i] == 0){
 						queue.push(i);
-						this->isvisited[i] = 1;	//·ÃÎÊÊı×éÏàÓ¦µÄÖÃ1 
+						this->isvisited[i] = 1;	//è®¿é—®æ•°ç»„ç›¸åº”çš„ç½®1 
 					}
 					i++;
 				}
 			}
 		}
 		
-		//µİ¹éÉî¶ÈÓÅÏÈ±éÀúDFS 
+		//é€’å½’æ·±åº¦ä¼˜å…ˆéå†DFS 
 		void DFS1(int vertex){
-			cout<<vertex<<" ";					//´òÓ¡µÚÒ»¸ö½áµã 
-			this->isvisited[vertex] = 1;		//ÏàÓ¦Î»µÄ·ÃÎÊÊı×éÖÃ1 
+			cout<<vertex<<" ";					//æ‰“å°ç¬¬ä¸€ä¸ªç»“ç‚¹ 
+			this->isvisited[vertex] = 1;		//ç›¸åº”ä½çš„è®¿é—®æ•°ç»„ç½®1 
 			for(int i = 1 ; i <= this->Nv ; i++){
-				//ÒÀ´Îµİ¹é±éÀúµ±Ç°½áµãµÄÎ´±»·ÃÎÊµÄÁÚ½Óµã 
+				//ä¾æ¬¡é€’å½’éå†å½“å‰ç»“ç‚¹çš„æœªè¢«è®¿é—®çš„é‚»æ¥ç‚¹ 
 				if(this->G[vertex][i] == 1 && this->isvisited[i] == 0){
 					this->isvisited[i] = 0;
 					this->DFS1(i);
@@ -72,17 +72,17 @@ class Graph{
 			this->isvisited[vertex] = 0;
 		}
 		
-		//·Çµİ¹éÉî¶ÈÓÅÏÈ±éÀúDFS
+		//éé€’å½’æ·±åº¦ä¼˜å…ˆéå†DFS
 		void DFS2(int vertex){
 			stack<int> stack;
-			stack.push(vertex);				//µ±Ç°½áµãÈëÕ» 
-			this->isvisited[vertex] = 1;	//ÏàÓ¦Î»µÄ·ÃÎÊÊı×éÖÃ1 
+			stack.push(vertex);				//å½“å‰ç»“ç‚¹å…¥æ ˆ 
+			this->isvisited[vertex] = 1;	//ç›¸åº”ä½çš„è®¿é—®æ•°ç»„ç½®1 
 			int now;
-			while(!stack.empty()){			//Õ»²»¿ÕÔòÒ»Ö±Ñ­»· 
-				now = stack.top();			//µ±Ç°½áµã³öÕ» 
+			while(!stack.empty()){			//æ ˆä¸ç©ºåˆ™ä¸€ç›´å¾ªç¯ 
+				now = stack.top();			//å½“å‰ç»“ç‚¹å‡ºæ ˆ 
 				stack.pop();
-				cout<<now<<" ";				//´òÓ¡µ±Ç°½áµã
-				//°Ñµ±Ç°½áµãµÄÎ´±»·ÃÎÊµÄÁÚ½ÓµãÒÀ´ÎÈëÕ»²¢°ÑÏàÓ¦·ÃÎÊÊı×éÖÃ1 
+				cout<<now<<" ";				//æ‰“å°å½“å‰ç»“ç‚¹
+				//æŠŠå½“å‰ç»“ç‚¹çš„æœªè¢«è®¿é—®çš„é‚»æ¥ç‚¹ä¾æ¬¡å…¥æ ˆå¹¶æŠŠç›¸åº”è®¿é—®æ•°ç»„ç½®1 
 				for(int i = 1 ; i <= this->Nv ; i++){
 					if(this->G[now][i] != 0 && this->isvisited[i] == 0){
 						stack.push(i);
@@ -95,25 +95,25 @@ class Graph{
 
 int main()
 {
-	cout<<"ÇëÊäÈë½áµã×ÜÊıÓë±ßÊı:"<<endl; 
+	cout<<"è¯·è¾“å…¥ç»“ç‚¹æ€»æ•°ä¸è¾¹æ•°:"<<endl; 
 	int nv,ne;
 	cin>>nv>>ne;
 	Graph graph(nv,ne);
-	cout<<"ÇëÊäÈëµÚÒ»¸ö·ÃÎÊµÄ½áµã£º"<<endl;
+	cout<<"è¯·è¾“å…¥ç¬¬ä¸€ä¸ªè®¿é—®çš„ç»“ç‚¹ï¼š"<<endl;
 	int now;
 	cin>>now;
 		
-	cout<<"¹ã¶ÈÓÅÏÈ±éÀú£¨BFS£©ĞòÁĞÎª£º"<<endl; 
+	cout<<"å¹¿åº¦ä¼˜å…ˆéå†ï¼ˆBFSï¼‰åºåˆ—ä¸ºï¼š"<<endl; 
 	graph.BFS(now);
 	cout<<endl;
 	
 	graph.reset();
-	cout<<"µİ¹éÉî¶ÈÓÅÏÈ±éÀú£¨DFS£©ĞòÁĞÎª£º"<<endl; 
+	cout<<"é€’å½’æ·±åº¦ä¼˜å…ˆéå†ï¼ˆDFSï¼‰åºåˆ—ä¸ºï¼š"<<endl; 
 	graph.DFS1(now);
 	cout<<endl;
 	
 	graph.reset();
-	cout<<"·Çµİ¹éÉî¶ÈÓÅÏÈ±éÀú£¨DFS£©ĞòÁĞÎª£º"<<endl; 
+	cout<<"éé€’å½’æ·±åº¦ä¼˜å…ˆéå†ï¼ˆDFSï¼‰åºåˆ—ä¸ºï¼š"<<endl; 
 	graph.DFS2(now);
 	cout<<endl;	
 	

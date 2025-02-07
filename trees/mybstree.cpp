@@ -37,7 +37,7 @@ BSTNode<T>* BSTree<T>::insert(BSTNode<T>* tree,BSTNode<T>* add) {
 template<class T>
 bool BSTree<T>::insert(T key) {
     BSTNode<T>* add = nullptr;
-    //±£Ö¤´ı²åÈëÔªËØ²»ÖØ¸´
+    //ä¿è¯å¾…æ’å…¥å…ƒç´ ä¸é‡å¤
     if (search(key) || (add = new BSTNode<T>(key, nullptr, nullptr, nullptr)) == nullptr)
         return false;
     insert(root_,add);
@@ -106,7 +106,7 @@ T BSTree<T>::getMax() {
 
 
 //
-template<class T>   //´óÓÚ¸Ã½ÚµãµÄ×îĞ¡½Úµã
+template<class T>   //å¤§äºè¯¥èŠ‚ç‚¹çš„æœ€å°èŠ‚ç‚¹
 BSTNode<T>* BSTree<T>::successor(BSTNode<T>* tree) {
     if (tree->right_ != nullptr)
         getMin(tree->right_);

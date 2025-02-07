@@ -18,7 +18,7 @@ public:
 		if (len == 0) {
 			return head;	//false
 		}
-		cout << "ÇëÊäÈë¸÷¸ö½ÚµãµÄÊýÖµ:" << endl;
+		cout << "è¯·è¾“å…¥å„ä¸ªèŠ‚ç‚¹çš„æ•°å€¼:" << endl;
 		while(len--){
 			int data;
 			tail = new SingleList;
@@ -74,7 +74,7 @@ public:
 		list->m_data++;
 		return list;
 	}
-	//ÊäÈëË÷Òý,·µ»ØÏà¶ÔÓ¦µÄÖ¸Õë
+	//è¾“å…¥ç´¢å¼•,è¿”å›žç›¸å¯¹åº”çš„æŒ‡é’ˆ
 	SingleList* FindPointer(SingleList* list, int index){
 		SingleList* prev;
 		prev = list;
@@ -83,7 +83,7 @@ public:
 		}
 		return prev;
 	}
-	//ÊäÈëÊý¾Ý£¬Êä³öµÚÒ»¸öË÷Òý
+	//è¾“å…¥æ•°æ®ï¼Œè¾“å‡ºç¬¬ä¸€ä¸ªç´¢å¼•
 	int FindIndex(SingleList* list, int data) {
 		int index = -1;	//not find
 		SingleList* prev;
@@ -101,7 +101,7 @@ public:
 	void DeleteByIndex(SingleList* list,int index) {
 		int len = this->GetLength(list);
 		if (this->Isempty(list)) {
-			cout << "µ¥Á´±íÎª¿ÕÎÞ·¨É¾³ý" << endl;
+			cout << "å•é“¾è¡¨ä¸ºç©ºæ— æ³•åˆ é™¤" << endl;
 			return ;
 		}
 		SingleList* del_pre;
@@ -112,7 +112,7 @@ public:
 	void DeleteByData(SingleList* list,int data) {
 		int index = this->FindIndex(list, data);
 		if (index == -1) {
-			cout << "µ¥Á´±í²»´æÔÚÊý×éÎª" << data << "µÄ½Úµã" << endl;
+			cout << "å•é“¾è¡¨ä¸å­˜åœ¨æ•°ç»„ä¸º" << data << "çš„èŠ‚ç‚¹" << endl;
 			return ;
 		}
 		this->DeleteByIndex(list, index);

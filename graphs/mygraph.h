@@ -21,13 +21,13 @@ public:
 };
 
 
-//»ùÀà graph
+//åŸºç±» graph
 template<class T>
 class graph {
 public:
 	virtual ~graph() {}
 	
-	// ADT ·½·¨
+	// ADT æ–¹æ³•
 	virtual int NumberOfVertives() const = 0;
 	virtual int NumberOfEdges() const = 0;
 	virtual bool ExistEdge(int, int) const = 0;
@@ -37,10 +37,10 @@ public:
 	virtual int InDegree(int) const = 0;
 	virtual int OutDegree(int) const = 0;
 
-	//ÆäËû·½·¨
-	virtual bool directed() const = 0;	//µ±ÇÒ½öµ±ÊÇÓĞÏòÍ¼Ê±£¬·µ»ØÖµÎªtrue
-	virtual bool weighted() const = 0;	//µ±ÇÒ½öµ±ÊÇ¼ÓÈ¨Í¼Ê±£¬·µ»ØÖµÎªtrue
-	virtual vertexIterator<T>* iterator(int) = 0;	//·ÃÎÊÖ¸¶¨¶¥µãµÄÏàÁÚ¶¥µã
+	//å…¶ä»–æ–¹æ³•
+	virtual bool directed() const = 0;	//å½“ä¸”ä»…å½“æ˜¯æœ‰å‘å›¾æ—¶ï¼Œè¿”å›å€¼ä¸ºtrue
+	virtual bool weighted() const = 0;	//å½“ä¸”ä»…å½“æ˜¯åŠ æƒå›¾æ—¶ï¼Œè¿”å›å€¼ä¸ºtrue
+	virtual vertexIterator<T>* iterator(int) = 0;	//è®¿é—®æŒ‡å®šé¡¶ç‚¹çš„ç›¸é‚»é¡¶ç‚¹
 };
 
 //adjacencyGraph

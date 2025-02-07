@@ -14,7 +14,7 @@ public:
 		:capacity_(size+1), head_(0), tail_(0), queue_(nullptr) {
 		queue_ = new int[capacity_];
 	}
-	//CQueue(){}	Ä¬ÈÏ¹¹Ôì default
+	//CQueue(){}	é»˜è®¤æž„é€  default
 	~CLoopQueue(){
 		delete [] queue_;
 	}

@@ -1,7 +1,7 @@
 #ifndef ARRAYLIST_H_
 #define ARRAYLIST_H_
 
-//»ùÀà LinearList
+//åŸºç±» LinearList
 template <class T>
 class LinearList {
 protected:
@@ -15,7 +15,7 @@ protected:
     virtual void    output(ostream& out) const = 0;
 };
 
-//¹«ÓĞ¼Ì³Ğ ArrayList
+//å…¬æœ‰ç»§æ‰¿ ArrayList
 template <class T>
 class ArrayList : public LinearList<T> {
 public:
@@ -23,7 +23,7 @@ public:
             ArrayList(const ArrayList<T>&);
             ~ArrayList() { delete [] element; }
 
-    //ADT·½·¨
+    //ADTæ–¹æ³•
     bool    empty() const { return listSize == 0; }
     int     size() const { return listSize; }
     T&      get(int theIndex) const;
@@ -32,14 +32,14 @@ public:
     void    insert(int theIndex, const T& theElement);
     void    output(ostream& out) const;
 
-    //ÆäËû·½·¨
+    //å…¶ä»–æ–¹æ³•
     int     capacity() const { return arrayLength; }
 
 private:
-    void    CheckIndex(int theIndex) const;   //ÈôË÷Òı theIndex ÎŞĞ§, ÔòÅ×³öÒì³£
+    void    CheckIndex(int theIndex) const;   //è‹¥ç´¢å¼• theIndex æ— æ•ˆ, åˆ™æŠ›å‡ºå¼‚å¸¸
     T*      element;
-    int     arrayLength;    //Ò»Î¬Êı×éµÄÈİÁ¿
-    int     listSize;   //ÏßĞÔ±íµÄÔªËØ¸öÊı
+    int     arrayLength;    //ä¸€ç»´æ•°ç»„çš„å®¹é‡
+    int     listSize;   //çº¿æ€§è¡¨çš„å…ƒç´ ä¸ªæ•°
 };
 
 
